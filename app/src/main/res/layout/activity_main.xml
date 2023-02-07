@@ -1,69 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activity.MainActivity">
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="mainActivity"
+            type="com.shino72.fractionking.main.MainViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_margin="30sp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".main.MainActivity">
+        <TextView
+            android:id="@+id/mainTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/blackboard"
+            android:text="Compare Fractions"
+            android:textColor="@color/white"
+            android:textSize="60sp"
+            app:layout_constraintBottom_toTopOf="@+id/difficultTV"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/mainTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/blackboard"
-        android:text="분수 비교"
-        android:textColor="@color/white"
-        android:textSize="60sp"
-        app:layout_constraintBottom_toTopOf="@+id/difficultTV"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/difficultTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/blackboard"
+            android:text="Digit"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/startBTN"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mainTV" />
 
-    <TextView
-        android:fontFamily="@font/blackboard"
-        android:text="자리 수"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        android:id="@+id/difficultTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainTV" />
-    <androidx.appcompat.widget.AppCompatButton
-        app:layout_constraintTop_toBottomOf="@+id/difficultTV"
-        android:id="@+id/downBTN"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/numTV"
-        android:text="<"
-        android:textSize="30sp"
-        android:textColor="@color/white"
-        android:fontFamily="@font/blackboard"
-        android:backgroundTint="@color/transparent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <TextView
-        app:layout_constraintTop_toBottomOf="@+id/difficultTV"
-        app:layout_constraintLeft_toRightOf="@id/downBTN"
-        app:layout_constraintRight_toLeftOf="@+id/upBTN"
-        android:id="@+id/numTV"
-        android:text="1"
-        android:fontFamily="@font/blackboard"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <androidx.appcompat.widget.AppCompatButton
-        app:layout_constraintTop_toBottomOf="@+id/difficultTV"
-        app:layout_constraintLeft_toRightOf="@id/numTV"
-        app:layout_constraintRight_toRightOf="parent"
-        android:id="@+id/upBTN"
-        android:text=">"
-        android:textSize="30sp"
-        android:textColor="@color/white"
-        android:fontFamily="@font/blackboard"
-        android:backgroundTint="@color/transparent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/downBTN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:backgroundTint="@color/transparent"
+            android:fontFamily="@font/blackboard"
+            android:text="&lt;"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:onClick="@{()->mainActivity.decrease()}"
+            app:layout_constraintBottom_toBottomOf="@id/upBTN"
+            app:layout_constraintRight_toLeftOf="@+id/numTV"
+            app:layout_constraintTop_toTopOf="@+id/upBTN"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/numTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/blackboard"
+            android:text="1"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@id/upBTN"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/upBTN" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            app:layout_constraintVertical_bias="0"
+            android:id="@+id/upBTN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:backgroundTint="@color/transparent"
+            android:fontFamily="@font/blackboard"
+            android:text="&gt;"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:onClick="@{()->mainActivity.increase()}"
+            app:layout_constraintLeft_toRightOf="@id/numTV"
+            app:layout_constraintTop_toBottomOf="@+id/difficultTV" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:background="@color/white"
+            android:textSize="30sp"
+            android:id="@+id/startBTN"
+            android:fontFamily="@font/blackboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="START"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/upBTN" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
