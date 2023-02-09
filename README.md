@@ -1,11 +1,11 @@
 # fractionKing
 Compare Fraction
 
-# URL
+# Download URL
 https://play.google.com/store/apps/details?id=com.shino72.fractionking
 
 # 앱 설명
-분수 비교 어플리케이션 (KOTLIN)
+분수 비교 게임 어플리케이션 (KOTLIN)
 
 # 기능
 분수 비교 자리 수 설정 가능 천의 자리수까지 가능
